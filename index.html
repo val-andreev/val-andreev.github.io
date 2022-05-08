@@ -19,7 +19,7 @@
         });
 }});
  sceneEl = document.querySelector("a-scene");
- handleScale(event) {
+ function handleScale(event) {
     if (isMarkerVisible) {
       this.scaleFactor *=
         1 + event.detail.spreadChange / event.detail.startSpread;
@@ -34,7 +34,7 @@
       el.object3D.scale.z = scaleFactor * initialScale.z;
     }
   }
- handleRotation(event) {
+ function handleRotation(event) {
     if (isMarkerVisible) {
       el.object3D.rotation.y +=
         event.detail.positionChange.x * rotationFactor;
@@ -50,6 +50,8 @@
 sceneEl.addEventListener("markerLost", (e) => {
     isMarkerVisible = false;
 });
+sceneEl.addEventListener("onefingermove", handleRotation);
+sceneEl.addEventListener("twofingermove", handleScale);
 </script>                                                                                                          
 <style>
   .arjs-loader {
