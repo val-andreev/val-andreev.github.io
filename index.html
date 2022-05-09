@@ -22,11 +22,21 @@
     color: white;
   }
 </style>
-
+<script>
+  document.querySelector('#objreset').addEventListener("click", (e)=> {
+  document.querySelector('#armodelValery').scale(0.40,0.40,0.40);
+  document.querySelector('#armodelValery').rotation(0,90,270);
+ });
+</script>
 <body style="margin : 0px; overflow: hidden;">
   <!-- minimal loader shown until image descriptors are loaded -->
   <div class="arjs-loader">
     <div>Loading, please wait...</div>
+  </div>
+  <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+    <button id='objreset'>
+        RESET MODEL
+    </button>
   </div>
   <a-scene
     vr-mode-ui="enabled: false;"
@@ -57,6 +67,7 @@
         rotation="0 90 270"
         class="clickable"
         gesture-handler="minScale: 0.25; maxScale: 10"
+        id='armodelValery'        
       >
 
       </a-entity>
